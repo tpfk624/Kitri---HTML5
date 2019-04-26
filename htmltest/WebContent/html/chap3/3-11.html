@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h3>이미지</h3>
+	<img src="movie.jpg" border = "5"><br>
+
+	<!-- width,height를 하나만 100으로 줄여도 그 비율만큼 width,height도 변함 -->
+	<img src="movie.jpg" width="100"/> <!--상대경로 -->
+	<img src="./movie.jpg"height ="100"/><br> <!--상대경로 -->
+
+	<!-- <img src="E:\javadata\html\chap3\movie.jpg"/> 절대경로이지만 웹에서는 안보임-->
+
+	<img src="http://localhost/html/chap3/movie.jpg" width="100" height="100"/> <!--절대경로 -->
+	<img src="/html/chap3/movie.jpg" alt = "조질라 vs 고질라"/><br><!--root를 기준으로 잡아서 절대경로 -->
+
+
+	<!-- 이미지 주소로 들어가기 만약 인터넷이 안되는 상황이면 이미지 보이지않음-->
+	<img src="https://movie-phinf.pstatic.net/20111222_158/1324484881637f7HoO_JPEG/movie_image.jpg?type=m665_443_2" title = "안녕 난 고질라"/>
+	
+	<br><br><br><br>
+	<img src="../../img/logo.png"/> 	<!-- 상대 경로 -->
+	<img src="/htmltest/img/logo.png"/> <!-- 절대 경로 -->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--꼭 기억하기!!
+
+.(생략) -> 경로에 아무것도 안쓰거나 .은 현재를 의미함
+..		-> 하나 위
+\		-> 최상위 디렉토리
+
+
+웹에서는 구분자가 /
+-->

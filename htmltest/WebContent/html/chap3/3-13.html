@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- name : 실제 서버에 전송되는 이름 -->
+	<form name= "test" method="GET/POST" action="url">
+	<ul type = "none">
+		<li>
+		<label for="userid">아이디</label>
+		<input type = "text" name="userid" id="userid" size ="15" maxlength="15"> <!-- size: 우리 눈에 보이는 크기, maxlength: 글자수 -->
+		</li>
+
+		<li>
+		<label for="pass">비밀번호</label>
+		<input type = "password" name="pass" id="pass">
+		</li>
+		<li><input type="submit" value="로그인"></li>
+		<li><input type="reset" value="취소"></li>
+		<!-- 버튼 submit하는 순간 action에 있는 url로 정보를 가지고 넘어간다 
+			default값이 get방식이어서 post로 쓰지않는 모든 경우에 get방식으로 넘어간다(오타,빈문자여도)
+			reset은 초기화시킨다 -->
+	</ul>
+	</form>
+</body>
+</html>

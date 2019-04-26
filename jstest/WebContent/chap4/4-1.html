@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+function alertOpen() {
+	alert("알림창입니다");
+}
+
+function confirmOpen(){
+	if (confirm("진짜 삭제???")) {
+		console.log("삭제되었습니다!!!");
+	}else{
+		console.log("취소되었습니다!!!");
+	}
+}
+
+function promptOpen(){
+	var txt = prompt("이름입력!!!","");
+	console.log("당신의 이름은 " + txt + "입니다.");
+}
+
+function myOpen(){
+	//열때는 window.open 닫을때는 self.close
+	window.open("/js/chap4/my.html", "test", "width=400, height=300, top=200, left=300 ");
+}
+
+</script>
+</head>
+<body>
+<button onclick="javascript:alertOpen()">알림창</button>
+<button onclick="javascript:confirmOpen()">확인창</button>
+<button onclick="javascript:promptOpen()">입력창</button>
+<button onclick="javascript:myOpen()">새창열기</button><br>
+span메세지 : <span id = "view" style= "background-color:red"></span> <!-- 블록단위 -->
+div 메세지 : <div style= "background-color: orange">안녕하세요</div>		<!-- 라인단위 -->
+p 메세지 : <p style= "background-color: pink">안녕하세요</p>				<!-- 라인단위 -->
+</body>
+</html>

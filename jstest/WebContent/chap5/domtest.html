@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+<!-- 아무 표시없이 지정하면 태그이름에 속성지정 
+	 클래스에는 앞에 . 붙이기-->
+table {
+	width: 300px;
+}
+td {
+	border: 1px dashed lightgray;
+	font-family: 굴림;
+	font-size: 11pt;
+	font-weight: bold;
+}
+.td1{
+	background-color: orange;
+	text-align: center;
+}
+.td2{
+	background-color: pink;
+}
+
+</style>
+
+<script type="text/javascript">
+var idx = 0; //전역으로 빼서 계속 숫자가 커지게끔 만든다
+var span;
+
+function appendAnswer() {
+	idx++;
+	var ip = document.createElement("input"); //<input>이 만들어짐
+	ip.setAttribute("type", "text"); //<input type = "text">
+	ip.setAttribute("name", "answer"); //<input type = "text" name = "answer">
+	
+	var btn = document.createElement("input"); 
+	btn.setAttribute("type", "button"); 
+	btn.setAttribute("value", "제거"); 
+	btn.setAttribute("onclick", "deleteAnswer(" + idx +  ");"); //몇번째 항목을 지워라
+	
+	var div = document.createElement("div");
+	div.setAttribute("id", "answer" + idx);
+	
+	div.appendChild(ip);
+	div.appendChild(btn);
+	
+	//var span =  document.getElementById("answerSpan");
+	span =  document.getElementById("answerSpan");
+	span.appendChild(div);
+}
+
+function deleteAnswer(i){
+	var delDiv = document.getElementById("answer" + i);
+	if(delDiv != null){
+		//delDiv.parentNode.removeChild(delDiv); //부모를 구해서 자식을 지운다
+		span.removeChild(delDiv); //span을 전역변수로 빼면 소스가 간단해짐
+	}
+}
+
+function makePoll(){
+	if(document.getElementById("question").value == ""){ //질문창 값이 빈칸이라면
+		alert("질문을 입력하세요!!!");
+		return;
+	}	
+	var answer = document.getElementsByName("answer");  //배열 답변을 추가할수록 생기니까 //엘리먼트스
+	for (var i = 0; i < answer.length; i++) {
+		if(answer[i].value == ""){
+			alert("답변을 입력하세요!!!");
+			return;
+		}
+	}
+	
+	//document.poll.action = "http://www.naver.com"; //이 주소로 갈거야를 지정 //이름이 폴인놈을 알아서 찾음 -> 폴 안에있는 액션에 무언가를 지정
+	//document.poll.submit();//폴이라는 폼을 서버에 제출하라
+	
+	//돔 방식
+	var form = document.getElementById("poll");
+	form.setAttribute("action", "http://www.daum.net");
+	form.submit();
+	
+	//jquery방식
+	//$("#poll").attr("action", "http://www.naver.com").submit();
+	
+	//지금은 빈칸 유효성검사만 했지만 나중에는 정규표현식 검색해서 공부하기(https://blog.naver.com/jeongju02/221517177533)
+}
+
+</script>
+</head>
+<body>
+<div align = "center"> 
+<h3>설문조사 만들기</h3>
+<form name = "poll" id="poll" action="" onsubmit="return false;"> 
+<table>
+<tr>
+	<td class ="td1">질문</td>
+	<td class ="td2"><input type = "text" name = "question" id="question"></td>
+</tr>
+<tr>
+	<td class ="td1" valign="top">
+	답변<br>
+	<button onclick="javascript:appendAnswer();">추가</button>
+	</td>
+	<td class ="td2">
+	<div><input type = "text" name = "answer" id="answer"></div>
+	<span id="answerSpan"></span>
+	</td>
+</tr>
+<tr>
+	<td class ="td1" colspan = "2">
+	<button onclick="javascript:makePoll();">만들기</button>
+	</td>
+</tr>
+</table>
+</form>
+</div>
+</body>
+</html>

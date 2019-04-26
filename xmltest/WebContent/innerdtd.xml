@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE book[
+	<!ELEMENT book (title,author,price,description?)>
+		<!ELEMENT title (#PCDATA)> 
+		<!ELEMENT author (#PCDATA)> 
+		<!ELEMENT price (#PCDATA)> 
+		<!ELEMENT description (#PCDATA)> 
+]>
+<!-- 느낌표는 무언가를 선언 
+	 엘리먼트 뒤에 괄호열고 타입을 지정할때에는 반드시 공백지정해야함 -->
+
+
+<book>
+	<title>java &amp; xml</title>
+	<author>홍길동</author>
+	<price>30000</price>
+	<!--실행이 되는 건 일단은 웰폼드이다
+	 	밸리드는 dtd에 일치하는지 -->
+</book>
+
+

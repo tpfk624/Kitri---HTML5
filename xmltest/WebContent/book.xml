@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE booklist SYSTEM "book.dtd">
+
+<booklist>
+	<book kind ="잡지" isbn="isbn">
+		<title>네모의 꿈</title>
+		<author>
+			<name sex="남">고세라</name>
+			<tel>010-5164-6737</tel>
+			<address>인천 서구 왕길동</address>
+		</author>	
+			
+		<publisher>키트리출판사</publisher>
+		<price>30000</price>
+		<description>설명여엉</description>
+	</book>
+	
+	<book isbn="isbn2">
+		<title>네모의 네모집</title>
+		<author>
+			<writer sex="남">박쏘갈</writer>
+			<tel>010-7379-6737</tel>
+			<address>경기도 과천 경마공원</address>
+		</author>	
+			
+		<publisher>kitri</publisher>
+		<price>30000</price>
+	</book>
+</booklist>
+
+

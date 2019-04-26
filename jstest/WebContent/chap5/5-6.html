@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>	
+	<div onclick = "javascript:alert('안녕하세요');">클릭해보세요</div>
+	
+	<div id = "div1">클릭해보세요2</div>
+	
+	<div id ="div2">클릭해보세요3</div>
+	
+	<script type="text/javascript">
+	document.getElementById("div1").onclick = function(){
+		alert('안녕하세요');
+	};
+	
+	// DOM 레벨2 이벤트 명세 방법
+	// 이벤트 명에 on을 생략(internet exploler 9 이전 버전 사용불가)
+	document.getElementById("div2").addEventListener("click", openAlert, false); 
+	
+	//Inertnet Exploer 9 이전 버전에서 사용하기 위한 방법
+	//document.getelementbyid("div1").attachEvent("onclick", apenalert);
+	function openAlert(){
+		alert("안녕하세요")
+	}
+	
+	</script>
+</body>
+</html>

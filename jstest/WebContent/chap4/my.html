@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function myClose(){
+	opener.document.getElementById("view").innerHTML = "오늘 그만 본다!!!" //오프너 = 연 창 //자기자신을 연결 기준으로 따진다//나중에 아이디중복검사에 사용
+	self.close();	//자기창만 닫아라
+}
+
+</script>
+</head>
+<body>
+새로운 창입니다.
+<br><br><br><br><br><br><br>
+<a href = "javascript:myClose();">1주일동안 열지않기</a>
+</body>
+</html>

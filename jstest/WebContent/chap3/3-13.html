@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+
+//함수선언문
+function sum1(num) {
+	var sum = 0;
+	for (var i = 1; i <= num; i++) {
+		sum += i;
+	}
+	console.log(sum);
+}
+sum1(10);
+
+
+//함수표현식
+var sum2 = function(num){
+	var sum = 0;
+	for (var i = 1; i <= num; i++) {
+		sum += i
+	}
+	console.log(sum);
+}
+sum2(10);
+
+
+//이건 잘 사용하지는 않음
+//function 생성자 함수
+var sum3 = new Function("num",
+		"var sum = 0;" +
+		"for(var i =1 ; i<=num; i++) {" +
+			" sum += i;" +
+			"}" +
+			"console.log(sum);");
+sum3(10);
+
+</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+</body>
+</html>

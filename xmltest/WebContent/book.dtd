@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 루트 엘리먼트 선언 -->
+<!ELEMENT booklist (book+)>
+
+	<!-- 자식 엘리먼트 선언 -->
+	<!ELEMENT book (title,author,publisher,price,description?)>
+		<!ELEMENT title (#PCDATA)>
+		<!ELEMENT author ((name|writer), tel, address)> 
+			<!ELEMENT name (#PCDATA)>
+			<!ELEMENT writer (#PCDATA)> 
+			<!ELEMENT tel (#PCDATA)> 
+			<!ELEMENT address (#PCDATA)> 
+		<!ELEMENT publisher (#PCDATA)> 
+		<!ELEMENT price (#PCDATA)>
+		<!ELEMENT description (#PCDATA)>
+	
+
+<!-- 속성 선언 -->
+<!ATTLIST book isbn ID #REQUIRED>
+<!ATTLIST book kind (IT|소설|잡지) "IT">
+<!ATTLIST name sex (남|여) "남">
+<!ATTLIST writer sex (남|여) "남">           
+
+
+            

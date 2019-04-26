@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function startTime(){
+	window.setInterval(showTime, 1000); //함수자리에 만들어둔 함수 넣고 ms에 시간넣기
+}
+
+function showTime() {
+	var date = new Date();	
+	var view = document.getElementById("viewtime");
+	//viewtime div가 열리고 닫히는 중간에 html을 넣어라
+	view.innerHTML = '<font color = "steelblue" size="15">' + date + '</font>';	
+}
+</script>
+</head>
+<body>
+<div id = "viewtime" align = "center"></div>
+<button onclick="startTime();">시간작동</button>
+</body>
+</html>

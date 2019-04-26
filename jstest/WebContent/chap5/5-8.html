@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id ="div1">클릭해보세요</div>
+	
+	<script type="text/javascript">
+
+	// DOM 레벨2 이벤트 명세 방법
+	// 이벤트 명에 on을 생략(internet exploler 9 이전 버전 사용불가)
+	document.getElementById("div1").addEventListener("click", openAlert, false); 
+	
+	
+	function openAlert(){
+		alert("안녕하세요")
+	}
+	</script>
+	
+	
+</body>
+</html>
