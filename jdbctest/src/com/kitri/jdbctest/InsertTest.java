@@ -7,7 +7,7 @@ public class InsertTest {
 	public InsertTest() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("Driver Loading Syccess!!!!");
+			System.out.println("Driver Loading Success!!!!");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
