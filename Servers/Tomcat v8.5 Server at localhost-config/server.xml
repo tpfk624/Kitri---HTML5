@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="htmltest" path="/htmltest" reloadable="true" source="org.eclipse.jst.jee.server:htmltest"/><Context docBase="jstest" path="/js" reloadable="true" source="org.eclipse.jst.jee.server:jstest"/><Context docBase="xmltest" path="/xmltest" reloadable="true" source="org.eclipse.jst.jee.server:xmltest"/><Context docBase="helloservlet2.5" path="/helloservlet2.5" reloadable="true" source="org.eclipse.jst.jee.server:helloservlet2.5"/><Context docBase="helloservlet" path="/helloservlet" reloadable="true" source="org.eclipse.jst.jee.server:helloservlet"/></Host>
+      <Context docBase="htmltest" path="/htmltest" reloadable="true" source="org.eclipse.jst.jee.server:htmltest"/><Context docBase="jstest" path="/js" reloadable="true" source="org.eclipse.jst.jee.server:jstest"/><Context docBase="xmltest" path="/xmltest" reloadable="true" source="org.eclipse.jst.jee.server:xmltest"/><Context docBase="helloservlet2.5" path="/helloservlet2.5" reloadable="true" source="org.eclipse.jst.jee.server:helloservlet2.5"/><Context docBase="helloservlet" path="/helloservlet" reloadable="true" source="org.eclipse.jst.jee.server:helloservlet"/><Context docBase="basicservlet" path="/basicservlet" reloadable="true" source="org.eclipse.jst.jee.server:basicservlet"/></Host>
     </Engine>
   </Service>
 </Server>
