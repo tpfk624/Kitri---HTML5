@@ -42,7 +42,7 @@ public class MultiParameterTest extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("	<body>");
-		out.println(name + "(<font color=\"" + color + "\">" + id + "</font>)님 안녕하세요 <br>");
+		out.println(name + "(<font color='" + color + "'>" + id + "</font>)님 안녕하세요 <br>");
 
 		if (fruit == null) {
 			out.println("좋아하는 과일이 없습니다");

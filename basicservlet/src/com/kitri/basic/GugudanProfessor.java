@@ -35,7 +35,6 @@ public class GugudanProfessor extends HttpServlet {
 			out.println(			"<tr align = \"center\" bgcolor=\"" + color + "\">");
 			for(int i = 1; i < 10; i++) {
 				out.println("<td>" + dan + " * " + i + " = " + dan * i + "</td>");
-				
 			}
 			out.println("</tr>");
 		}
@@ -43,9 +42,5 @@ public class GugudanProfessor extends HttpServlet {
 		out.println("	</div>");
 		out.println("	</body>");
 		out.println("</html>");
-		
 	}
-
-	
-
 }
