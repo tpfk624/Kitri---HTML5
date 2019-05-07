@@ -17,7 +17,8 @@ public class MemberLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
-
+	//드라이버 로딩안해도 실행이 된다(init)
+	//이유: 실직적으로 sever.xml과 web.xml을 읽어들이는데 일단 읽는 순간 서버에 올라가니까 이미 우리가 실행할때에는 드라이브가 로딩 된 상태이다
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		
@@ -28,6 +29,7 @@ public class MemberLogin extends HttpServlet {
 		}
 	}
 
+	
 	//로그인은 양은 적지만 비밀번호가 있어서 post
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
