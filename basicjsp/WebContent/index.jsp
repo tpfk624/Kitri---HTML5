@@ -13,7 +13,7 @@
 <a href="/basicjsp/counter.jsp">3. 방문자JSP</a><br>
 <a href="/basicjsp/dbcounter.jsp">4. 방문자DB JSP</a><br>
 
-<a href="/basicjsp/param/singleparam.html">5. 단일 파라미터 전달</a><br>
-<a href="/basicjsp/param/multiparam.html">6. 다중 파라미터 전달</a><br>
+<a href="/basicjsp/param/singleparam.jsp">5. 단일 파라미터 전달</a><br>
+<a href="/basicjsp/param/multiparam.jsp">6. 다중 파라미터 전달</a><br>
 </body>
 </html>
