@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
     
 <%@ include file="/template/header.jsp" %> <!-- include는 자기 프로젝트내에서만 파일을 가져올 수 있어서 파일경로는 안써준다 -->
+
+<script type="text/javascript" src="<%=root%>/js/httpRequest.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	 
@@ -10,13 +12,44 @@ $(document).ready(function() {
 	});
 	
 });
+var resultview;
+var idcount = 1;
+
+function idcheck(){
+	resultview = document.getElementById("idresult");
+	var searchId = document.getElementById("id").value;
+	if(searchId.length < 5 || searchId.length > 16) {
+		resultview.innerHTML = '<font color="gray">아이디는 5자이상 16자이하입니다.</font>';
+	}else{
+		//여기 부분만 통신해야해서 AJAX사용?
+		var params = "act=idcheck&sid=" + searchId;
+		sendRequest("<%=root%>/user", params, idcheckResult, "GET"); 
+		resultview.innerHTML = '';
+	}
+}
+
+function idcheckResult(){
+	if(httpRequest.readyState == 4){ //모든 데이터가 넘어옴
+		if (httpRequest.status == 200) { //정상적으로 넘어왔을때
+			var result = httpRequest.responseXML;
+			idcount = parseInt(result.getElementsByTagName("cnt")[0].firstChild.data);//무조건 하나뿐이니까 [0]이다 //0또는 1을 얻어옴
+			if(idcount == 0){
+				resultview.innerHTML = '<font color="steelblue">사용 가능합니다.</font>';
+			}else{
+				resultview.innerHTML = '<font color="magenta">사용중입니다. 다른 아이디를 검색해보세요.</font>';
+			}
+		}
+	}else{
+		//로딩중...
+	}
+}
 
 function register(){
 	if(document.getElementById("name").value == ""){
 		alert("이름 입력!!!");
 		return;
-	}else if(document.getElementById("id").value == ""){
-		alert("아이디 입력!!!");
+	}else if(idcount != 0){
+		alert("아이디 중복검사를 하세요!!!");
 		return;
 	}else if(document.getElementById("pass").value == ""){
 		alert("비밀번호 입력!!!");
@@ -25,7 +58,7 @@ function register(){
 		alert("비밀번호 확인!!!");
 		return;
 	}else {
-		document.getElementById("memberform").action = "<%=root%>/user/register.jsp"; //여기로 갈거다
+		document.getElementById("memberform").action = "<%=root%>/user"; //여기로 갈거다
 		document.getElementById("memberform").submit(); //여기서 감
 		
 	}
@@ -37,13 +70,15 @@ function register(){
 	<div class="col-lg-6" align="center">
 		<h2>회원가입</h2>
 		<form id="memberform" method="post" action="">
+			<input type = "hidden" name = "act" value="register">
 			<div class="form-group" align="left">
 				<label for="name">이름</label>
 				<input type="text" class="form-control" id="name" name="name" placeholder="이름입력">
 			</div>
 			<div class="form-group" align="left">
 				<label for="">아이디</label>
-				<input type="text" class="form-control" id="id" name="id" placeholder="4자이상 16자 이하">
+				<input type="text" class="form-control" id="id" name="id" onkeyup="javascript:idcheck();" placeholder="4자이상 16자 이하">
+				<div id ="idresult"></div>
 			</div>
 			<div class="form-group" align="left">
 				<label for="">비밀번호</label>
@@ -88,8 +123,8 @@ function register(){
 					<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" size="7" maxlength="5" readonly="readonly">
 					<!--<button type="button" class="btn btn-primary" onclick="javascript:">우편번호</button>-->
 				</div>
-				<input type="text" class="form-control" id="address" name="address" placeholder="">
-				<input type="text" class="form-control" id="address_detail" name="address_detail" placeholder="">
+				<input type="text" class="form-control" id="address" name="address" placeholder="" readonly="readonly">
+				<input type="text" class="form-control" id="address_detail" name="address_detail" placeholder="" >
 			</div>
 			<div class="form-group" align="center">
 				<button type="button" class="btn btn-primary" id="registerBtn" onclick="javascript:register();">회원가입</button>
