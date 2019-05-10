@@ -136,8 +136,38 @@ public class MemberDaoImpl implements MemberDao{
 
 	@Override
 	public MemberDto loginMember(Map<String, String> map) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberDto memberDto = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBConnection.makeConnection();
+			StringBuffer sql = new StringBuffer(); 			
+			sql.append("select name, id, emailid, emaildomain, joindate \n");
+			sql.append("from member \n");				
+			sql.append("where id = ? and pass = ? \n");		
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, map.get("userid"));
+			pstmt.setString(2, map.get("userpwd"));
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				//이 안에 왔다는건 아이디 비번을 얻어왔다는것
+				memberDto = new MemberDto();
+				memberDto.setName(rs.getString("name"));
+				memberDto.setId(rs.getString("id"));
+				memberDto.setEmailid(rs.getString("emailid"));
+				memberDto.setEmaildomain(rs.getString("emaildomain"));
+				memberDto.setJoindate(rs.getString("joindate"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBClose.close(conn, pstmt, rs);
+		}
+		
+		// return null; // 요게 문제!!! - 재운
+		return memberDto; // 요게 문제!!!
 	}
 
 	@Override

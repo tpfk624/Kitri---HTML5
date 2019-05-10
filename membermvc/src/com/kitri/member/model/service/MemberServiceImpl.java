@@ -1,9 +1,11 @@
 package com.kitri.member.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.kitri.member.model.*;
 import com.kitri.member.model.dao.MemberDaoImpl;
+import com.sun.javafx.collections.MappingChange.Map;
 
 public class MemberServiceImpl implements MemberService{
 
@@ -22,7 +24,7 @@ public class MemberServiceImpl implements MemberService{
 		return memberService;
 	}
 
-
+	
 	@Override
 	public String idCheck(String id) {
 		int cnt = MemberDaoImpl.getMemberDao().idCheck(id);
@@ -57,8 +59,10 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public MemberDto loginMember(String id, String pass) {
-		// TODO Auto-generated method stub
-		return null;
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("userid", id);
+		map.put("userpwd", pass);		
+		return  MemberDaoImpl.getMemberDao().loginMember(map);
 	}
 
 	@Override

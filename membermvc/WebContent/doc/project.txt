@@ -60,3 +60,38 @@ membermvc
 			  
 			  
   (- 는 폴더)
+  
+  
+  * HttpSession & cookie(저장공간)
+  Cookie:		: client txt >>String  (ev)아이디저장,오늘은 그만 볼래요
+  httvSession :  server memory  >> Object  
+  
+  
+오늘 본 상품
+찜목록(위시리스트) 
+운동화를 찍어넣는ㄴ
+장바구니
+
+
+쿠키 세션 db를 잘 구분하기
+
+
+*HttpSession vs Cookie (공통점: 저장공간)
+                           저장위치    저장형식         저장타입
+Cookie                : client  txt  => String    //보안에 취약  
+                      ex) 아이디 저장, 오늘은 그만 볼래요, 홈쇼핑 >  오늘 본 상품
+HttpSession           : server  memory => object  //
+                      ex) 찜목록, 장바구니 ... 정책에 따라 db가 될  수도 있지만
+                      
+오늘 본 상품 >> 쿠키 (사진, product_id 저장)
+찜목록(위시리스트) >> 기본정보만 담겨 있음
+           로그아웃을 해도 남아 있음 : db사용
+                      하면 사라짐 : session (dto를 저장)
+장바구니 >> 상세정보가 들어감(결제하기 바로 전 단계)
+
+
+
+
+
+
+  
