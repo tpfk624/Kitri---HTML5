@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+
+//아래내용을 JQUERY로 변경하기 
+//$(document).ready(function{})
+$(function(){
+	var $formObj = $("form");
+	$formObj.submit(function(){
+		var $tObj = $("input[name=t]");
+		var $tObjValue = $tObj.val().trim();
+		if($tObjValue.length == 0){
+			alert("반드시 입력하세요");
+			$tObj.focus();
+			return false;
+		}else{
+			alert("전송되었습니다");
+			//formObj.action = "http://naver.com";
+			//formObj.method='post';
+			//formObj.submit();
+			$formObj.attr("action", "http://naver.com");
+			$formObj.attr("method", "post");
+			//$formObj.submit(); //무한로딩?
+		}
+	});
+});
+
+
+/*window.addEventListener("load", function() {
+	
+	//dom트리에서 input 객체 중 type 속성값이 submit인 객체 찾기
+	var sumbmitObj = document.querySelector("input[type=submit]");
+	//submitObj에서 클릭이벤트 핸들러 작성하기
+	//할 일: 클릭되었습니다 경고창 띄우기
+	sumbmitObj.addEventListener("click", function() {
+		alert("클릭되었습니다");
+	});
+	
+	//dom트리에서 form객체찾기
+	var formObj = document.querySelector("form");
+	//formObj에서 submit이벤트 핸들러작성하기
+	//할일 : 전송되었습니다 경고창띄우기
+	formObj.addEventListener("submit", function(event) {
+	
+		//유효성검사
+		//input객체 중 name속성이 t인 객체찾기
+		var tobj = document.querySelector("input[name=t]");
+		var tobjValue = tobj.value.trim();
+		if(tobjValue.length==0){
+			alert("반드시 입력하세요");
+			tobj.focus();
+			event.preventDefault();//구글이동x
+		}else{
+			alert("전송되었습니다");			
+		}
+	});
+
+});*/
+</script>
+</head>
+<body>
+	<form action= "http://www.google.com">
+		<input name = "t"><br> <!-- name 속성은 전송을 위해 사용 -->
+		<input type= "password" name = "p"><br>
+		<input type= "checkbox" name = "c" value="1">ONE&nbsp;&nbsp;
+		<input type= "checkbox" name = "c" value="2">TWO&nbsp;&nbsp;
+		<input type= "checkbox" name = "c" value="3">THREE<br>
+		<select name = "s">
+			<option value="1">ONE</option>
+			<option value="2">TWO</option>
+			<option value="3">THREE</option>
+		</select>
+		<input type="submit" value="전송1"> <!-- 특수일처리 -->
+		<input type="button" value="버튼1"> <!-- 일처리x -->
+		<button>전송2</button> <!-- 특수일처리 -->
+		
+	</form>
+	<button>버튼2</button> <!-- 일처리x -->
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>first.html</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	//var all = document.querySelectorAll("body>p");
+	var $all = $("body>p"); //body의 객체인 p를 돔트리에서 모두 찾아온다
+	$all.click(function(){
+		$(this).hide(); //$()붙여서 자바스크립트 객체가 아닌 jquery객체로 변환시켜 jquery 다양한 메소드사용
+	});
+});
+
+
+/*var f1 = function(){
+	//obj.style.display='none'; //화면에서 사라지게 함
+	this.style.display='none'; //화면에서 사라지게 함
+}
+
+<!-- 돔트리가 완성될때까지 기다렸다가 콜백함수-->
+window.addEventListener("load", function(){
+	var all = document.querySelectorAll("body>p"); //여러개를 찾겠다 //바디 밑에 있는 p
+	for (var i = 0; i < all.length; i++) {
+		var obj = all[i]; //돔트리의 객체를 찾아가
+		obj.addEventListener("click", f1);    //콜백함수 //클릭 시 
+	}	
+});*/
+
+</script>
+
+</head>
+<body>
+
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
+
+</body>
+</html>

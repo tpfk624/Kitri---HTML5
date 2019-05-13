@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>semantic.html</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+$(function(){
+	//dom트리에서 nav>ul>li>a객체들 찾기
+	var aArr = $("nav>ul>li>a");
+	$(aArr).click(function () {
+		var vurl = $(this).attr("href");
+		$.ajax({
+			url: vurl,
+			method: 'get',
+			success: function(result){ //결과를 응답받을 응답내용을 function의 인자값으로 받아옴
+				$("section").html(result);				
+			} 
+		});
+		return false;  //기본이벤트 막기
+	});
+});
+
+</script>
+<style type="text/css">
+header{background-image: url("image/logo.png");
+	   background-repeat: no-repeat;
+	   height: 100px;
+
+}
+nav>ul{
+	list-style: none;
+	padding: 0px;
+	
+}
+nav>ul>li{
+	display: inline-block;
+}
+
+footer{
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	background-color: lightgray;
+}
+
+</style>
+
+</head>
+<body>
+<header><h3>My Web</h3></header>
+<nav>메뉴
+	<ul>
+		<!--  <li><a href="/membermvc/user/login/login.jsp">로그인</a></li> -->
+		<li><a href="login.html">로그인</a></li>
+		<li><a href="/membermvc/user/member/member.jsp">가입</a></li>
+	</ul>
+</nav>
+<section>본문</section>
+<footer>사업자: 현대자동차(주) | 대표 : 고세라 </footer>
+</body>
+</html>
