@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>scope.html</title>
+
+<script>
+var a;
+console.log( typeof(a) ); //undifined 
+console.log( a+1 ); //NaN
+
+var a = 10; //자바스크립트는 a변수를 또 선언해도 오류x 덮어쓰기가 된다
+console.log( a );
+
+var b = function(){
+	var lv = 'hello';
+	gv = "global";
+	for (var i = 0; i < 10; i++) {
+		console.log(i + "," + lv + "," + gv);
+	}
+	console.log("in function lv = " + lv);
+	console.log("in function i = " + i);
+	console.log("in function gv = " + gv);
+}
+
+console.log( typeof(b)); //function
+console.log(b); //function
+b();
+//console.log("out function lv = " + lv); //lv is not defined //var을 붙이면 해당 영역(스콥)안에 변수가 선언되는것, 함수 안에 선언된 변수는 함수안에서만 사용가능
+console.log("out function gv = " + gv); //global //var을 안붙이면 함수 바깥 영역에 선언이 되는 것
+</script>
+
+<script>
+//버튼 이벤트처리
+window.addEventListener("load", function() {
+	var arr = document.querySelectorAll("button");
+	for (var i = 0; i < arr.length; i++) {
+		var btobj = arr[i];
+		(
+		function(j){
+			btobj.addEventListener("click", function() {
+				var aObj = document.querySelector("input[name=a]");
+				var bObj = document.querySelector("input[name=b]");
+				var aNum = parseInt(aObj.value);
+				var bNum = parseInt(bObj.value);
+				//alert(j + "번째 버튼이 클릭되었습니다"); //scope을 나눠서 1번째,2번째... 버튼이 클릭되었습니다가 나옴
+				switch (j) {
+				case 0: //+
+					alert(aNum + bNum);
+					break;
+				case 1: //-
+					alert(aNum - bNum);
+					break;
+				case 2: //*
+					alert(aNum * bNum);
+					break;
+				case 3: // /
+					alert(aNum / bNum);
+					break;
+				}
+				
+				
+			});
+		}
+		)(i);
+	}
+});
+
+
+/*
+window.addEventListener("load", function() {
+	var arr = document.querySelectorAll("button");
+	for (var i = 0; i < arr.length; i++) {
+		var btobj = arr[i];
+		btobj.addEventListener("click", function() {
+			alert(i + "번째 버튼이 클릭되었습니다"); //4번째 버튼이 클릭되었습니다만 나옴  -> 버튼이 클릭되는 시점은 이미 반복문이 끝났을 시점
+		});
+	}
+});*/
+
+
+
+</script>
+
+</head>
+<body>
+<input type="text" name ="a">
+<input type="text" name ="b"><br>
+<button>+</button>
+<button>-</button>
+<button>*</button>
+<button>/</button>
+</body>
+</html>
+
+
+
+
+
+
+
