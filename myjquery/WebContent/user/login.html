@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="ko">
+<!--
 <head>
 <title>로그인</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+trigger을 사용하려면 cdn host가 한군데에만 있어야한다 
+-->
+
+
 <script>
-/* function login() {	
-	$(this).action = "/myjquery/login";
-} */
+function login() {	
+	$.ajax({
+		url:"/myjquery/login",
+		data:$("form").serialize(),
+		method:'post',	
+		success:function(result){
+			if(result.trim() == '1'){ //성공
+				location.href="/myjquery/semantic.jsp";
+			}else{ //실패
+				alert(result.trim());	
+			}			
+		},
+		error:function( jqXHR, textStatus, errorThrown){
+			alert(errorThrown);
+		}
+	});
+	return false;
+} 
 $(document).ready(function() {
-	/* var $loginFormObj = $("#loginform");
-	$loginFormObj.submit(login); */
-	$("#loginBtn").click(function(){
-		$.ajax({
-			url:"/myjquery/login", //서블릿
-			data:$("form").serialize(),
-			method:'post',	
-			success:function(result){
-				alert(result.trim());
-			},
-			error:function( jqXHR, textStatus, errorThrown){
-				alert(errorThrown);
-			}
-		});
-		return false;
+	var $loginFormObj = $("#loginform");
+	$loginFormObj.submit(login);
+	var $registerBtnObj = $("#moveRegisterBtn");//회원가입버튼객체
+	$registerBtnObj.click(function(){
+		$("nav>ul>li>a[href='user/signup.html']").trigger("click"); //trigger : 강제로 이벤트를 발생시킨다  
 	});
 });
 </script>
@@ -47,10 +59,11 @@ $(document).ready(function() {
 				       placeholder="" 
 				       required>
 			</div>
-			<div class="form-group" align="center">
-				<button class="btn btn-warning" id="loginBtn">로그인</button>
-				<button class="btn btn-primary" id="moveRegisterBtn">회원가입</button>
-			</div>
+		
 		</form>
+		<div class="form-group" align="center">
+		  <button class="btn btn-warning" form="loginform" id="loginBtn">로그인</button>
+		  <button class="btn btn-primary" id="moveRegisterBtn">회원가입</button>
+	    </div>
 	</div>
 </div>

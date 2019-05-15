@@ -11,5 +11,5 @@ public class NotFoundException extends Exception {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 }

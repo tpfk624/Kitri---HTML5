@@ -10,13 +10,16 @@ public class CustomerService {
 		try {
 			Customer c = dao.selectById(id);
 			if(c.getPass().equals(pass)) {
-				return "로그인 성공";
+				//return "로그인 성공";
+				return "1";
 			}else {
-				return "로그인 실패";
+				//return "로그인 실패";
+				return "-1";
 			}
 		} catch (NotFoundException e) {
 			e.printStackTrace();
-			return "로그인 실패:"+e.getMessage();
+			//return "로그인 실패:"+e.getMessage();
+			return "-1";
 		}
 	}
 }
