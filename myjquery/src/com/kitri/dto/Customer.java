@@ -4,6 +4,8 @@ public class Customer {
 	private String id;
 	private String pass;
 	private String name;
+	
+	
 	public Customer() {
 		super();
 	}
