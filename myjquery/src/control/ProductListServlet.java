@@ -21,7 +21,8 @@ public class ProductListServlet extends HttpServlet {
 	
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 ProductService service = new ProductService();;
+		 ProductService service = new ProductService();
+		 
 		 List<Product> list = new ArrayList<Product>();
 		 
 		list = service.findAll();

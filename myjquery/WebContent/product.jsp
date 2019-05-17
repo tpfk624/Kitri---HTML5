@@ -1,11 +1,9 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.kitri.dto.Product"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
+
+<!-- 1단계 내용 function + 1,2단계 내용 출력페이지 -->
 <script>
 	$(function() {
 		$.ajax({
@@ -16,7 +14,7 @@
 				$("div").html(result); //div에 결과를 html로 작성하라
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
-				alert("에러남");
+				alert("list 에러남");
 			}
 		});
 	});
@@ -26,7 +24,4 @@
 
 
 
-
-<div>
-
-</div> 
+<div></div>

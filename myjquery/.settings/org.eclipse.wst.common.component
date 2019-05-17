@@ -2,7 +2,7 @@
     <wb-module deploy-name="myjquery">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="myjquery"/>
         <property name="java-output-path" value="/myjquery/build/classes"/>
+        <property name="context-root" value="myjquery"/>
     </wb-module>
 </project-modules>

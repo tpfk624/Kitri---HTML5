@@ -8,17 +8,21 @@ import com.kitri.dto.Product;
 public class ProductService {
 	private ProductDAO dao;
 	
-	public ProductService() {
+	public ProductService() {//서비스에 DAO를  써야하니까 
 		dao = new ProductDAO();
 	}
 	
 
-	public List<Product>findAll(){
-		return dao.selectAll();
+	public List<Product> findAll(){
+	return dao.selectAll();
 	}
-	
-	public String findByNo() {
-		return dao.sele;
-		
+
+	public Product findByNo(String prod_no) {
+		System.out.println("service 들어옴");
+		Product p = dao.selectByNo(prod_no);
+		System.out.println(p);
+		return p;
 	}
+
+
 }
