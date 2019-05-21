@@ -106,9 +106,11 @@ $(function(){
 </head>
 <body>
 <header><h1>MOON BUCKS</h1></header>
-<nav>메뉴<jsp:include page="menu.jsp"/></nav>
+<nav>메뉴
+<jsp:include page="menu.jsp"/>
+</nav>
 <section>본문</section>
-<footer>사업자  대표 : 고세라 </footer>
+<footer>사업자  대표 : 오문정 </footer>
 <%--start productlist--%>
 <style>
 div.product_list_json{
@@ -146,6 +148,24 @@ $(function(){
   });
 });
 </script>
+<div class="product_list_json">
+<ul>
+    <li class="menuDataSet" >
+      <dl>
+        <dt>
+          <a href="#">          
+            <img src="" alt="">
+          </a>
+        </dt>
+        <dd class="category">카테고리:<span></span></dd>
+        <dd class="no">상품번호:<span></span></dd>
+        <dd class="name">상품명:<span></span></dd>
+        <dd class="price">가격:<span></span></dd>
+      </dl> 
+    </li>
+
+  </ul>    
+</div>
 
 <%--end productlist --%>
 </body>

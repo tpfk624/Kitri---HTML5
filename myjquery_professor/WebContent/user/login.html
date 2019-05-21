@@ -1,12 +1,12 @@
 <script>
 function login() {	
 	$.ajax({
-		url:"/myjquery_professor/login",
+		url:"/myeljstl/login",
 		data:$("form").serialize(),
 		method:'post',	
 		success:function(result){
 			if(result.trim() == '1'){ //성공
-				location.href="/myjquery_professor/semantic.jsp";
+				location.href="/myeljstl/semantic.jsp";
 			}else{ //실패
 				alert(result.trim());	
 			}			

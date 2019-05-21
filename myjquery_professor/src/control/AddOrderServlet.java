@@ -34,14 +34,13 @@ public class AddOrderServlet extends HttpServlet {
 				(Map)session.getAttribute("cart");
 		List<OrderLine> lines = new ArrayList<>();
 		for(Product p: cart.keySet()) {
-			String no = p.getProd_no();
-			int quantity = (Integer)cart.get(no);
+			//String no = p.getProd_no(); ?????
+			int quantity = (Integer)cart.get(p);
 			OrderLine line = new OrderLine();
 			//상품번호, 수량->OrderLine에 설정			
 			line.setProduct(p);
 			line.setOrder_quantity(quantity);
-			
-			lines.add(line);//????라인채우기
+			lines.add(line);//????
 		}
 		info.setLines(lines);
 		

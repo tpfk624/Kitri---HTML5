@@ -46,10 +46,10 @@ $(function(){
 			url:"addorder",
 			method:"get",
 			success:function(result){
-				if(result.trim()== '-1'){ //주문실패
+				if(result.trim()=='-1'){ //주문실패
 					alert("주문실패");
-				}else if(result.trim()== '1'){ //주문성공
-					alert("주문성공");
+				}else if(result.trim()=='1'){//주문성공
+					alert("주문성공");				  
 				}
 			}
 		});

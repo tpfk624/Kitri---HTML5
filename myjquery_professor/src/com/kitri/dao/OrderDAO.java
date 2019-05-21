@@ -123,8 +123,7 @@ public class OrderDAO {
 					" FROM order_info info JOIN order_line line ON info.order_no = line.order_no" + 
 					" JOIN product p ON p.prod_no = line.ORDER_PROD_NO" + 
 					" WHERE order_id = ?" + 
-					" ORDER BY order_no DESC, prod_no";
-			
+					" ORDER BY order_no DESC, prod_no";			
 			pstmt = con.prepareStatement(selectByIdSQL);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
@@ -134,9 +133,9 @@ public class OrderDAO {
 			int old_order_no = -1;
 			while( rs.next() ) {
 				int order_no = rs.getInt("order_no");
-				if(old_order_no != order_no) {
+				if(old_order_no != order_no) { //주문번호가 다를 때 
 					info = new OrderInfo();
-					list.add(info);
+					list.add(info); 
 					info.setOrder_no(order_no);
 					info.setOrder_dt(rs.getDate("order_dt"));
 					lines = new ArrayList<>();
@@ -145,38 +144,59 @@ public class OrderDAO {
 				}
 				line = new OrderLine();
 				String prod_no = rs.getString("prod_no");//상품번호,명,가격
+				String prod_name = rs.getString("prod_name");
+				int prod_price = rs.getInt("prod_price");
 				Product p = new Product();
 				p.setProd_no(prod_no);
-				//:
+				p.setProd_name(prod_name);
+				p.setProd_price(prod_price);
+				
 				line.setProduct(p);
 				line.setOrder_quantity(rs.getInt("order_quantity"));
 				
-				lines.add(line);//???	
+				lines.add(line);//???
+				
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-		}if(rs != null) {
-			try {
-				rs.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
+		}finally {
+			if(rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
-		if(pstmt != null) {
-			try {
-				pstmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		if(con != null) {
-			try {
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
 		return list;
+	}	  
+	public static void main(String[] args) {
+		OrderDAO dao = new OrderDAO();
+		List<OrderInfo> list = dao.selectById("test");
+		System.out.println(list.size());
+		for(OrderInfo info:list) {
+			System.out.println(info.getOrder_no());
+			System.out.println(info.getOrder_dt());
+			List<OrderLine>lines = info.getLines();
+			for(OrderLine line:lines) {
+				System.out.println(line.getProduct());
+				System.out.println(line.getOrder_quantity());
+			}
+			System.out.println("------------");
+		}
 	}
 }
