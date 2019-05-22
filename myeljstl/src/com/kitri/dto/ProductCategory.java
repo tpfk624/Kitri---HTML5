@@ -3,6 +3,8 @@ package com.kitri.dto;
 public class ProductCategory {
 	private String cate_no;
 	private String cate_name;
+	
+	
 	public ProductCategory() {
 		super();
 	}
@@ -27,6 +29,4 @@ public class ProductCategory {
 	public String toString() {
 		return "ProductCategory [cate_no=" + cate_no + ", cate_name=" + cate_name + "]";
 	}
-	
-	
 }

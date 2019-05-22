@@ -8,18 +8,34 @@
 <title>el.jsp</title>
 </head>
 <body>
+
 작업구분
+
 <hr>
 <%=request.getParameter("opt") %>작업을 선택했습니다.<br>
 ${param.opt}작업을 선택했습니다
+
+
+
 <hr>
 <%=Integer.parseInt(request.getParameter("a")) + 10%><br>
 ${param.a+10}
+
+
 <hr>
-<% Customer c = new Customer("id1", "p1", "n1");
+<%-- Customer c = new Customer("id1", "p1", "n1");
 	request.setAttribute("c", c);
-%>
+--%>
+
+<hr>
 고객이름 : <%= ((Customer)request.getAttribute("c")).getName() %><br>
 고객이름: ${requestScope.c.name }
+
+
+
+<hr>
+웹컨텍스트명  : ${pageContext.request.contextPath}
+
+
 </body>
 </html>

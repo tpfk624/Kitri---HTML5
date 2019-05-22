@@ -1,10 +1,16 @@
 <%@page import="com.kitri.dto.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="p" value="${requestScope.product}"/>    
+<c:set var="no" value="${p.prod_no}"/>
+<%-- 
    Product p = (Product)request.getAttribute("product");
    String no = p.getProd_no();
-%>
+--%>
+
 <style>
 @media screen and (max-width: 300px)
 div.product_view_detail {
@@ -19,11 +25,6 @@ div.product_view_pic {
     float: left;
     position: relative;
 }
-img {
-    vertical-align: top;
-    width: 80%;
-    max-width: 100%;
-}
 div.product_view_detail {
     width: 40%;
     /* width: 610px; */
@@ -31,6 +32,11 @@ div.product_view_detail {
     position: relative;
 }
 
+div.product_view_detail img {
+    vertical-align: top;
+    width: 80%;
+    max-width: 100%;
+}
 
 div.product_view_detail h4 {
     font-size: 24px;
@@ -109,7 +115,7 @@ $(function(){
 		  url:'addcart',
 		  method:'get',
 		  data:
-'no=<%=no%>&quantity='+$("input[name=quantity]").val(),
+'no=${no}&quantity='+$("input[name=quantity]").val(),
 		  success:function(result){
 			  //$("section").html(result.trim());
 			  $("div.addcartresult").remove();
@@ -125,25 +131,30 @@ $(function(){
 
 <div class="product_view">
 <div class="product_view_pic">
-  <img src="images/<%=no%>.jpg">
+  <img src="images/${no}.jpg">
 </div>
 <div class="product_view_detail">
-<h4><%=p.getProd_name() %></h4>
+<h4>${p.prod_name}</h4>
 <p class="t1"><%-- <%=p.getProd_detail()==null?"":p.getProd_detail() %> --%>
 신선하게 브루드(Brewed)되어 원두의 다양함이 살아있는 커피
 </p>
 <div class="product_info_content">
 <!-- <form action="addcart" method="get"> -->
- <input type="hidden" name="no" value="<%=no%>">
+ <input type="hidden" name="no" value="${no}">
 <ul>
 <li class="no">
  <dl><dt>상품번호</dt>
-     <dd><%=no %></dd>
+     <dd>${no}</dd>
 </dl>
 </li>
 <li class="name">
  <dl><dt>가격</dt>
-     <dd><%=p.getProd_price() %></dd>
+     <dd>
+     <fmt:formatNumber value="${p.prod_price}" 
+                       type="currency" currencySymbol="￦"/>
+    	
+	
+<%-- &#65510;<fmt:formatNumber value="${p.prod_price}" pattern="#,##0"/>  --%>    
 </dl>
 </li>
 

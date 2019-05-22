@@ -46,6 +46,7 @@ $(function(){
 
 <c:set var="list" value="${requestScope.productlist}" />
 <c:forEach var="p" items="${list}" >
+
     <li class="menuDataSet">
       <dl>
         <dt>
@@ -53,7 +54,7 @@ $(function(){
             <img src="images/${p.prod_no}.jpg" alt="${p.prod_name}이미지입니다">
           </a>
         </dt>
-        <dd class="category">카테고리:<span>${p.productCategory().cate_name}</span></dd>
+        <dd class="category">카테고리:<span>${p.productCategory.cate_name}</span></dd>
         <dd class="no">상품번호:<span>${p.prod_no}</span></dd>
         <dd class="name">상품명:<span>${p.prod_name}</span></dd>
         <dd class="price">가격:<span>${p.prod_price}</span></dd>
