@@ -15,12 +15,14 @@
 <body>
 
 
+<hr>
 <!-- 원래 코드였다면  null이었겠지만 여기서는 빈문자열로 바뀌어서 그게 문자 0으로 처리됨? -->	
 <c:set var="num" value="${param.num}" />    <%-- int num=Integer.parseInt(request.getParameter("num")); --%>
 요청전달데이터 num=${num}<br>
 <c:if test="${num%2==0}" >	      <%--if(){} --%>          <!-- jstl에서 값이나 조건문은 el표기로 써야함  -->
 짝수입니다.<br>
 </c:if>
+
 
 
 
@@ -37,12 +39,13 @@
 
 
 
+
 <hr>
 <%--for(int i=1; i<=10; i++){} --%>	<!-- 반복문  -->
-
 <c:forEach begin="1" end="10" step="1" var="i"> 	
 ${i}	
 </c:forEach>
+
 
 
 
@@ -52,6 +55,8 @@ ${i}
 	<c:set var="total" value="${total+i}"/> <!-- 새로 선언니 아니고 저 위에 있는걸 재사용  -->
 </c:forEach>
 1~10합 : ${total}
+
+
 
 
 
